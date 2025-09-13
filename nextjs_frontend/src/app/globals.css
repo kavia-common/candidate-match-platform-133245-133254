@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --color-primary: #000000;
+  --color-primary: #0f172a; /* slate-900 */
   --color-secondary: #FFFFFF;
-  --color-accent: #3B82F6;
+  --color-accent: #3B82F6; /* blue-500 */
   --color-background: #FFFFFF;
 }
 
@@ -22,5 +22,19 @@ body {
 }
 
 body {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: system-ui, -apple-system, ui-sans-serif, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* Utility helpers */
+.container {
+  @apply mx-auto max-w-6xl px-4;
+}
+.card {
+  @apply rounded-lg border bg-white p-6;
+}
+.title {
+  @apply text-2xl font-semibold;
+}
+.subtitle {
+  @apply text-slate-600;
 }
