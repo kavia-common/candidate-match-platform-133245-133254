@@ -34,13 +34,13 @@ export default function ApplicantAssessmentsPage() {
   };
 
   return (
-    <div className="mx-auto max-w-2xl space-y-6">
+    <div className="container max-w-2xl section">
       <div>
-        <h1 className="text-2xl font-semibold">Assessments</h1>
-        <p className="text-slate-600 mt-1">Complete assessments to improve your job matches.</p>
+        <h1 className="title">Assessments</h1>
+        <p className="subtitle mt-1">Complete assessments to improve your job matches.</p>
       </div>
 
-      <form onSubmit={onSubmit} className="rounded-lg border bg-white p-6 space-y-4">
+      <form onSubmit={onSubmit} className="form">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Input label="Candidate ID" value={candidateId} onChange={(e) => setCandidateId(e.target.value)} />
           <Input label="Assessment ID" value={assessmentId} onChange={(e) => setAssessmentId(e.target.value)} />
@@ -51,7 +51,7 @@ export default function ApplicantAssessmentsPage() {
       </form>
 
       {message && (
-        <div className="rounded-md border bg-slate-50 p-4 text-sm">
+        <div className="card-muted">
           {message}
         </div>
       )}

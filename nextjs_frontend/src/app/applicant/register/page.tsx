@@ -28,11 +28,11 @@ export default function ApplicantRegisterPage() {
   };
 
   return (
-    <div className="mx-auto max-w-md">
-      <h1 className="text-2xl font-semibold">Create your account</h1>
-      <p className="text-slate-600 mt-1">Join CareerMatch and start applying today.</p>
+    <div className="container max-w-md">
+      <h1 className="title">Create your account</h1>
+      <p className="subtitle mt-1">Join CareerMatch and start applying today.</p>
 
-      <form onSubmit={onSubmit} className="mt-6 space-y-4 rounded-lg border bg-white p-6">
+      <form onSubmit={onSubmit} className="mt-6 form">
         <Input label="Full Name" value={name} onChange={(e) => setName(e.target.value)} required />
         <Input label="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <Input label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
@@ -40,7 +40,7 @@ export default function ApplicantRegisterPage() {
       </form>
 
       {message && (
-        <div className="mt-4 rounded-md border bg-slate-50 p-4 text-sm">
+        <div className="mt-4 card-muted">
           {message}
         </div>
       )}

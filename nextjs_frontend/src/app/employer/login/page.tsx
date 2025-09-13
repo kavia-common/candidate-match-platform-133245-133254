@@ -27,18 +27,18 @@ export default function EmployerLoginPage() {
   };
 
   return (
-    <div className="mx-auto max-w-md">
-      <h1 className="text-2xl font-semibold">Employer Login</h1>
-      <p className="text-slate-600 mt-1">Access your employer dashboard.</p>
+    <div className="container max-w-md">
+      <h1 className="title">Employer Login</h1>
+      <p className="subtitle mt-1">Access your employer dashboard.</p>
 
-      <form onSubmit={onSubmit} className="mt-6 space-y-4 rounded-lg border bg-white p-6">
+      <form onSubmit={onSubmit} className="mt-6 form">
         <Input label="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <Input label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         <Button type="submit" loading={loading}>Login</Button>
       </form>
 
       {message && (
-        <div className="mt-4 rounded-md border bg-slate-50 p-4 text-sm">
+        <div className="mt-4 card-muted">
           {message}
         </div>
       )}

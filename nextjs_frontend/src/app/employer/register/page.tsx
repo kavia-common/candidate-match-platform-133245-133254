@@ -28,11 +28,11 @@ export default function EmployerRegisterPage() {
   };
 
   return (
-    <div className="mx-auto max-w-md">
-      <h1 className="text-2xl font-semibold">Create your employer account</h1>
-      <p className="text-slate-600 mt-1">Post jobs and manage candidates on CareerMatch.</p>
+    <div className="container max-w-md">
+      <h1 className="title">Create your employer account</h1>
+      <p className="subtitle mt-1">Post jobs and manage candidates on CareerMatch.</p>
 
-      <form onSubmit={onSubmit} className="mt-6 space-y-4 rounded-lg border bg-white p-6">
+      <form onSubmit={onSubmit} className="mt-6 form">
         <Input label="Company / Recruiter Name" value={name} onChange={(e) => setName(e.target.value)} required />
         <Input label="Work Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <Input label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
@@ -40,7 +40,7 @@ export default function EmployerRegisterPage() {
       </form>
 
       {message && (
-        <div className="mt-4 rounded-md border bg-slate-50 p-4 text-sm">
+        <div className="mt-4 card-muted">
           {message}
         </div>
       )}

@@ -35,15 +35,15 @@ function MatchesContent() {
   }, []);
 
   return (
-    <div className="space-y-6">
+    <div className="section">
       <div className="flex items-end justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold">Matched Candidates</h1>
-          <p className="text-slate-600 mt-1">Candidates recommended for your job based on assessments.</p>
+          <h1 className="title">Matched Candidates</h1>
+          <p className="subtitle mt-1">Candidates recommended for your job based on assessments.</p>
         </div>
       </div>
 
-      <div className="rounded-lg border bg-white p-5 space-y-4">
+      <div className="card space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <Input label="Job ID" value={jobId} onChange={(e) => setJobId(e.target.value)} />
           <Input
@@ -56,9 +56,9 @@ function MatchesContent() {
         <Button onClick={fetchMatches} loading={loading}>Refresh</Button>
       </div>
 
-      {message && <div className="rounded-md border bg-slate-50 p-4 text-sm">{message}</div>}
+      {message && <div className="card-muted">{message}</div>}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid-cards">
         {matches.map((m) => (
           <article key={m.id} className="rounded-lg border bg-white p-5">
             <header className="flex items-center justify-between">

@@ -32,13 +32,13 @@ export default function EmployerPostJobPage() {
   };
 
   return (
-    <div className="mx-auto max-w-2xl space-y-6">
+    <div className="container max-w-2xl section">
       <div>
-        <h1 className="text-2xl font-semibold">Post a Job</h1>
-        <p className="text-slate-600 mt-1">Create a new job listing for candidates.</p>
+        <h1 className="title">Post a Job</h1>
+        <p className="subtitle mt-1">Create a new job listing for candidates.</p>
       </div>
 
-      <form onSubmit={onSubmit} className="rounded-lg border bg-white p-6 space-y-4">
+      <form onSubmit={onSubmit} className="form">
         <Input label="Job Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
         <Input label="Company" value={company} onChange={(e) => setCompany(e.target.value)} required />
         <Input label="Location" value={location} onChange={(e) => setLocation(e.target.value)} required />
@@ -55,7 +55,7 @@ export default function EmployerPostJobPage() {
       </form>
 
       {message && (
-        <div className="rounded-md border bg-slate-50 p-4 text-sm">
+        <div className="card-muted">
           {message}
         </div>
       )}

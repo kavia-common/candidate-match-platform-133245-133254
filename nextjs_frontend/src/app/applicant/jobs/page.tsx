@@ -1,12 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 import { Api, Job } from "@/lib/api";
 import { useSearchParams } from "next/navigation";
 
-export default function ApplicantJobsPage() {
+function JobsContent() {
   const [q, setQ] = React.useState("");
   const [jobs, setJobs] = React.useState<Job[]>([]);
   const [matches, setMatches] = React.useState<Job[]>([]);
@@ -57,23 +57,23 @@ export default function ApplicantJobsPage() {
   }, [activeTab]);
 
   return (
-    <div className="space-y-8">
-      <div className="flex items-end justify-between gap-4">
+    <div className="section">
+      <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold">Find Jobs</h1>
-          <p className="text-slate-600 mt-1">Search and discover roles that match your skills.</p>
+          <h1 className="title">Find Jobs</h1>
+          <p className="subtitle mt-1">Search and discover roles that match your skills.</p>
         </div>
       </div>
 
-      <div className="rounded-lg border bg-white p-5">
+      <div className="card">
         <div className="flex flex-wrap items-end gap-4">
           <div className="w-full sm:w-72">
             <Input label="Search" placeholder="Title, company or location" value={q} onChange={(e) => setQ(e.target.value)} />
           </div>
           <Button onClick={fetchJobs} variant="secondary" disabled={loading}>Search</Button>
           <div className="ml-auto flex gap-2 text-sm">
-            <a href="/applicant/jobs?tab=jobs" className={`px-3 py-1.5 rounded-md ${activeTab === "jobs" ? "bg-blue-600 text-white" : "bg-slate-100 hover:bg-slate-200"}`}>Jobs</a>
-            <a href="/applicant/jobs?tab=matches" className={`px-3 py-1.5 rounded-md ${activeTab === "matches" ? "bg-blue-600 text-white" : "bg-slate-100 hover:bg-slate-200"}`}>Matches</a>
+            <a href="/applicant/jobs?tab=jobs" className={`tab ${activeTab === "jobs" ? "tab-active" : ""}`}>Jobs</a>
+            <a href="/applicant/jobs?tab=matches" className={`tab ${activeTab === "matches" ? "tab-active" : ""}`}>Matches</a>
           </div>
         </div>
 
@@ -90,10 +90,10 @@ export default function ApplicantJobsPage() {
       </div>
 
       {message && (
-        <div className="rounded-md border bg-slate-50 p-4 text-sm">{message}</div>
+        <div className="card-muted">{message}</div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid-cards">
         {activeTab === "jobs" &&
           jobs.map((job, idx) => (
             <article key={job.id ?? idx} className="rounded-lg border bg-white p-5">
@@ -135,5 +135,13 @@ export default function ApplicantJobsPage() {
         }
       </div>
     </div>
+  );
+}
+
+export default function ApplicantJobsPage() {
+  return (
+    <Suspense fallback={<div className="text-sm text-slate-600">Loading jobs...</div>}>
+      <JobsContent />
+    </Suspense>
   );
 }

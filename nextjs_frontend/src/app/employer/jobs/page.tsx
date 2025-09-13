@@ -30,20 +30,20 @@ export default function EmployerJobsPage() {
   }, []);
 
   return (
-    <div className="space-y-6">
+    <div className="section">
       <div className="flex items-end justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold">Manage Jobs</h1>
-          <p className="text-slate-600 mt-1">Review and manage your posted jobs.</p>
+          <h1 className="title">Manage Jobs</h1>
+          <p className="subtitle mt-1">Review and manage your posted jobs.</p>
         </div>
         <Link className="rounded-md bg-blue-600 text-white px-4 py-2 text-sm hover:bg-blue-700" href="/employer/jobs/post">
           Post New Job
         </Link>
       </div>
 
-      {message && <div className="rounded-md border bg-slate-50 p-4 text-sm">{message}</div>}
+      {message && <div className="card-muted">{message}</div>}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid-cards">
         {jobs.map((job) => (
           <article key={job.id} className="rounded-lg border bg-white p-5">
             <header className="flex items-center justify-between">
@@ -54,7 +54,7 @@ export default function EmployerJobsPage() {
               <span className="text-xs text-slate-500">ID: {job.id ?? "N/A"}</span>
             </header>
             <p className="mt-3 text-sm text-slate-700 line-clamp-3">{job.description}</p>
-            <div className="mt-4 flex gap-2">
+            <div className="mt-4 flex flex-wrap gap-2">
               <Link className="rounded-md bg-slate-100 px-3 py-1.5 text-sm hover:bg-slate-200" href={`/employer/candidates?jobId=${job.id}`}>View Candidates</Link>
               <Link className="rounded-md bg-slate-100 px-3 py-1.5 text-sm hover:bg-slate-200" href={`/employer/candidates/matches?jobId=${job.id}`}>View Matches</Link>
             </div>
@@ -69,8 +69,8 @@ export default function EmployerJobsPage() {
       </div>
 
       {!loading && jobs.length === 0 && (
-        <div className="rounded-lg border bg-white p-6 text-sm">
-          You have no jobs yet. <Link className="text-blue-600 hover:underline" href="/employer/jobs/post">Post your first job</Link>.
+        <div className="card p-6 text-sm">
+          You have no jobs yet. <Link className="link" href="/employer/jobs/post">Post your first job</Link>.
         </div>
       )}
     </div>

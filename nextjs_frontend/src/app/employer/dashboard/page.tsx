@@ -11,13 +11,13 @@ export default function EmployerDashboardPage() {
   ];
 
   return (
-    <div className="space-y-8">
+    <div className="section">
       <div>
-        <h1 className="text-2xl font-semibold">Employer Dashboard</h1>
-        <p className="text-slate-600 mt-1">Overview of your hiring pipeline.</p>
+        <h1 className="title">Employer Dashboard</h1>
+        <p className="subtitle mt-1">Overview of your hiring pipeline.</p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="grid-stats">
         {stats.map((s) => (
           <div key={s.label} className="rounded-lg border bg-white p-4">
             <div className="text-sm text-slate-500">{s.label}</div>

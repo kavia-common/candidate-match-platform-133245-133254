@@ -12,13 +12,13 @@ export default function ApplicantDashboardPage() {
   ];
 
   return (
-    <div className="space-y-8">
+    <div className="section">
       <div>
-        <h1 className="text-2xl font-semibold">Dashboard</h1>
-        <p className="text-slate-600 mt-1">Welcome back! Track your progress and continue your journey.</p>
+        <h1 className="title">Dashboard</h1>
+        <p className="subtitle mt-1">Welcome back! Track your progress and continue your journey.</p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="grid-stats">
         {stats.map((s) => (
           <div key={s.label} className="rounded-lg border bg-white p-4">
             <div className="text-sm text-slate-500">{s.label}</div>
@@ -35,10 +35,10 @@ export default function ApplicantDashboardPage() {
             <li>Review your job matches</li>
             <li>Update your profile</li>
           </ul>
-          <div className="mt-4 flex gap-2">
-            <Link className="text-blue-600 hover:underline" href="/applicant/assessments">Go to Assessments</Link>
+          <div className="mt-4 flex flex-wrap items-center gap-2 text-sm">
+            <Link className="link" href="/applicant/assessments">Go to Assessments</Link>
             <span className="text-slate-400">•</span>
-            <Link className="text-blue-600 hover:underline" href="/applicant/jobs?tab=matches">View Matches</Link>
+            <Link className="link" href="/applicant/jobs?tab=matches">View Matches</Link>
           </div>
         </div>
         <div className="rounded-lg border bg-white p-5">
