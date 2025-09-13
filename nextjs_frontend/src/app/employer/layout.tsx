@@ -2,9 +2,19 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
 
+/**
+ * PUBLIC_INTERFACE
+ * Metadata for Employer segment.
+ */
 export const metadata: Metadata = {
-  title: "Employer | CareerMatch",
+  title: {
+    default: "Employer",
+    template: "%s | Employer | CareerMatch",
+  },
   description: "Employer panel for CareerMatch",
+  alternates: {
+    canonical: "/employer",
+  },
 };
 
 export default function EmployerLayout({ children }: { children: React.ReactNode }) {
